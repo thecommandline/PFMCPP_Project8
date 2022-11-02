@@ -54,7 +54,14 @@ your task:
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <cassert>
+
+#include "Highway.h"
+#include "HighwayPatrol.h"
+#include "Car.h"
+#include "Motorcycle.h"
+#include "SemiTruck.h"
+#include "Vehicle.h"
+
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
@@ -108,7 +115,7 @@ int main()
      reserve how ever many cars, motorcycles, and trucks you'll create first
      */
     cars.reserve(3); //reserving room for 3 Car instances
-    
+
     /*
      Now that we have reserved space for our UDT instances inside the vector, we can construct them in-place inside the vector.
      emplace_back is passed the constructor arguments for your UDT.
@@ -121,17 +128,41 @@ int main()
      construct 2 more Car instances via emplace_back.
      */
     
+    cars.emplace_back("Bob");
+    cars.emplace_back("Alice");
+
     /*
      now reserve and emplace_back your Trucks and Motorcyles
      */
     
+    motorcycles.reserve(4);
+    motorcycles.emplace_back("Leonardo");
+    motorcycles.emplace_back("Michelangelo");
+    motorcycles.emplace_back("Donatello");
+    motorcycles.emplace_back("Raphael");
     
+    trucks.reserve(2);
+    trucks.emplace_back("Knuth");
+    trucks.emplace_back("Schneier");
     
-    
-    assert(false);
+
     //add the cars, motorcycles and trucks to the highway using range-based for() loops: for( element : vec ) { ... }
     //be careful to not accidentally make element copies when iterating.
-    
+    for(auto& car : cars)
+    {
+        highway.addVehicle(&car);
+    }
+
+    for(auto& motorcycle: motorcycles)
+    {
+        highway.addVehicle(&motorcycle);
+    }
+
+    for(auto& truck : trucks)
+    {
+        highway.addVehicle(&truck);
+    }
+
     HighwayPatrol cop;
     cop.scanHighway(&highway);
 
