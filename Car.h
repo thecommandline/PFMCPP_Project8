@@ -3,7 +3,7 @@
 #include "Vehicle.h"
 
 
-struct Car : public Vehicle
+struct Car : Vehicle
 {
     ~Car() override = default; 
     Car(const Car&) = default;

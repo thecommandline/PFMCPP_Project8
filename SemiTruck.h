@@ -4,7 +4,7 @@
 #include "Vehicle.h"
 
 
-struct SemiTruck : public Vehicle 
+struct SemiTruck : Vehicle 
 {
     ~SemiTruck() override; 
     SemiTruck(const SemiTruck&) = default;
